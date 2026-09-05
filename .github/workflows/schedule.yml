@@ -1,0 +1,33 @@
+name: Run Script To Check NAV Everyday At 11:00 AM
+
+on:
+  schedule:
+    # This runs the script every day at 11:00 AM
+    - cron: '0 11 * * *'
+  # Allows you to manually trigger the script from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Pull your code from the repository into the runner
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      # 2. Install the programming language environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      # 3. Install required script dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 4. Execute script file
+      - name: Execute script
+        run: python main.py
