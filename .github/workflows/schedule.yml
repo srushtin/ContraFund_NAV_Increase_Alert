@@ -3,7 +3,7 @@ name: Run Script To Check NAV Everyday At 11:00 AM
 on:
   schedule:
     # This runs the script every day at 11:00 AM
-    - cron: '0 11 * * *'
+    - cron: '5 12 * * *'
   # Allows you to manually trigger the script from the Actions tab
   workflow_dispatch:
 
