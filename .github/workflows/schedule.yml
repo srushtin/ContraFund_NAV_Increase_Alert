@@ -30,4 +30,7 @@ jobs:
 
       # 4. Execute script file
       - name: Execute script
+        env:
+          email: ${{ secrets.EMAIL }}
+          pwd: ${{ secrets.PWD }}
         run: python main.py
