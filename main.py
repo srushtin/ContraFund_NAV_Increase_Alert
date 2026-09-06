@@ -22,7 +22,7 @@ with smtplib.SMTP("smtp.gmail.com",587) as connection:
     for nav in nav_data[1:31]:
         nav_list+=f"{nav['date']} : {nav['nav']}\n"
 
-    if current_nav < earlier_nav:
+    if current_nav > earlier_nav:
         body=(f'Subject:{scheme_name} - NAV has increased to {current_nav} from {earlier_nav}\n\n'
               f'Current NAV: {current_nav}\n'
               f'One year all time high: {one_year_all_time_high}\n'
